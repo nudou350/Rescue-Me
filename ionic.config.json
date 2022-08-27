@@ -1,0 +1,7 @@
+{
+  "name": "RescueMe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
