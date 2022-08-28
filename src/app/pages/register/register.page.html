@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="register-flex" [formGroup]="form">
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input formControlName="email" placeholder="Email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password" formControlName="password" placeholder="Senha"></ion-input>
+  </ion-item>
+    <ion-button (click)="register()" [disabled]="this.form.invalid" style="margin-top:1rem ;">Cadastrar</ion-button>
+</div>
+</ion-content>

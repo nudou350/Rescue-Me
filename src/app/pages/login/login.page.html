@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="login-flex" [formGroup]="form">
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input formControlName="email" placeholder="Email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password" formControlName="password" placeholder="Senha"></ion-input>
+  </ion-item>
+    <ion-button (click)="login()" [disabled]="this.form.invalid" style="margin-top:1rem ;">Entrar!</ion-button>
+
+      <ion-label>Não tem uma conta?</ion-label>
+
+    <ion-item (click)="this.router.navigateByUrl('tabs/register')">
+      <ion-label>Cadastre aqui!</ion-label>
+    </ion-item>
+</div>
+</ion-content>

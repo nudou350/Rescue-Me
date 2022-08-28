@@ -1,17 +1,105 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-title >
+     <div class="header">
+      <div><p>Home</p></div>
+      <div *ngIf="!(this.user$|async)"><ion-button (click)="router.navigateByUrl('tabs/login')" fill="outline" size="small">Login</ion-button></div>
+      <div *ngIf="(this.user$|async)"><ion-button (click)="signOut()" fill="outline" color="danger" size="small">Logout</ion-button></div>
+     </div>
     </ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="updateList($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Home</ion-title>
     </ion-toolbar>
   </ion-header>
+  <app-explore-container name="Home"></app-explore-container>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list class="search-filter">
+    <ion-item>
+      <ion-select #location (ionChange)="filterLocation(location.value)" placeholder="Filtrar por local">
+        <ion-select-option>Todos</ion-select-option>
+        <ion-select-option>Beja</ion-select-option>
+        <ion-select-option>Lisboa</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-select placeholder="Tamanho">
+        <ion-select-option>Pequeno</ion-select-option>
+        <ion-select-option>Médio</ion-select-option>
+        <ion-select-option>Gordo</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+
+
+  </ion-list>
+  <!-- <ion-list class="search-filter">
+    <ion-item>
+      <ion-select placeholder="Gênero">
+        <ion-select-option>Masculino</ion-select-option>
+        <ion-select-option>Feminino</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-select placeholder="Idade">
+        <ion-select-option>1 ano</ion-select-option>
+        <ion-select-option>2 anos</ion-select-option>
+        <ion-select-option>3 anos</ion-select-option>
+        <ion-select-option>4 anos</ion-select-option>
+        <ion-select-option>5 anos</ion-select-option>
+        <ion-select-option>6 anos</ion-select-option>
+        <ion-select-option>7 anos</ion-select-option>
+        <ion-select-option>8 anos</ion-select-option>
+        <ion-select-option>9 anos</ion-select-option>
+        <ion-select-option>10+ anos</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list> -->
+
+  <ion-item-group *ngFor="let pet of pets$|async">
+    <ion-item (click)="viewDetails(pet)">
+      <ion-card mode="ios" (click)="router.navigate(['tabs/detail', pet.id, pet.ong])">
+        <img [src]="pet.url" />
+        <ion-card-header>
+          <ion-card-title class="dog-name">{{pet.name}}</ion-card-title>
+          <div class="info">
+            <div>
+              <ion-card-subtitle>
+                <ion-icon name="location"></ion-icon>
+                {{pet.location}}
+              </ion-card-subtitle>
+              <ion-card-subtitle>
+                <ion-icon name="paw"></ion-icon>
+                {{pet.size}}
+              </ion-card-subtitle>
+            </div>
+            <div>
+              <ion-card-subtitle>
+                <ion-icon name="male-female"></ion-icon>
+                {{pet.gender}}
+              </ion-card-subtitle>
+              <ion-card-subtitle>
+                <ion-icon name="accessibility"></ion-icon>
+                ≈ {{pet.age}} Anos
+              </ion-card-subtitle>
+            </div>
+
+          </div>
+
+        </ion-card-header>
+        <ion-card-content>
+          {{pet.description}}
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+    
+  </ion-item-group>
 </ion-content>

@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info{
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+.search-filter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

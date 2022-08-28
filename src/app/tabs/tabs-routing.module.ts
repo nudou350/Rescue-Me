@@ -20,6 +20,26 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
+        path: 'login',
+        loadChildren: () => import('../pages/login/login.module').then( m => m.LoginPageModule)
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('../pages/register/register.module').then( m => m.RegisterPageModule)
+      },
+      {
+        path: 'create-pet',
+        loadChildren: () => import('../pages/create-pet/create-pet.module').then( m => m.CreatePetPageModule)
+      },
+      {
+        path: 'update-pet',
+        loadChildren: () => import('../pages/update-pet/update-pet.module').then( m => m.UpdatePetPageModule)
+      },
+      {
+        path: 'pet-detail/:id/:ong',
+        loadChildren: () => import('../pages/pet-detail/pet-detail.module').then( m => m.PetDetailPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

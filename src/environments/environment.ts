@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    projectId: 'resgate-me',
+    appId: '1:280956106382:web:72caeb7bbb347dce4efbdf',
+    databaseURL: 'https://resgate-me-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'resgate-me.appspot.com',
+    locationId: 'europe-west',
+    apiKey: 'AIzaSyABXNGSZ8LY0pTAGNadMdbjmKzI_19c48o',
+    authDomain: 'resgate-me.firebaseapp.com',
+    messagingSenderId: '280956106382',
+    measurementId: 'G-QNL5EHQQXC',
+  }
 };
 
 /*

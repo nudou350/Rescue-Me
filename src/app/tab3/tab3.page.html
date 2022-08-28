@@ -1,17 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Pets
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content *ngIf="user$ | async as user" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Pets</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <!-- <app-explore-container name="Tab 3 page"></app-explore-container> -->
+
+  <ion-item>
+    <ion-title style="margin-top: 1rem; text-align: left; margin-bottom: 1rem;">
+      <ion-icon name="home"></ion-icon>
+      {{user.ong}}
+    </ion-title>
+  </ion-item>
+  <div class="flex-button">
+    <ion-button (click)="create()" expand="full" color="success">
+      <ion-icon name="add" slot="start"></ion-icon>Adicionar Pet
+    </ion-button>
+
+
+    <ion-button (click)="update()" expand="full" color="warning">
+      <ion-icon name="refresh" slot="start"></ion-icon>Atualizar Pets
+    </ion-button>
+
+  </div>
+
+
 </ion-content>

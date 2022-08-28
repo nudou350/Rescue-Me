@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title style="color: white">
+      Gerenciar Pets
+    </ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Gerenciar Pets</ion-title>
+      
+    </ion-toolbar>
+  </ion-header>
+  
+
+  <ion-item-group *ngFor="let pet of pets$|async">
+    <ion-item>
+      <ion-card mode="ios">
+        <img [src]="pet.url" />
+        <ion-card-header>
+          <ion-card-title class="dog-name">{{pet.name}}</ion-card-title>
+          <div class="info">
+            <div>
+              <ion-card-subtitle>
+                <ion-icon name="location"></ion-icon>
+                {{pet.location}}
+              </ion-card-subtitle>
+              <ion-card-subtitle>
+                <ion-icon name="paw"></ion-icon>
+                {{pet.size}}
+              </ion-card-subtitle>
+            </div>
+            <div>
+              <ion-card-subtitle>
+                <ion-icon name="male-female"></ion-icon>
+                {{pet.gender}}
+              </ion-card-subtitle>
+              <ion-card-subtitle>
+                <ion-icon name="accessibility"></ion-icon>
+                ≈ {{pet.age}} Anos
+              </ion-card-subtitle>
+            </div>
+
+          </div>
+
+        </ion-card-header>
+        <ion-card-content>
+          {{pet.description}}
+        </ion-card-content>
+        <div class="flex-update">
+          <!-- <ion-button color="warning">Atualizar</ion-button> -->
+          <ion-button (click)="removePet(pet)" color="danger">Remover</ion-button>
+        </div>
+      </ion-card>
+    </ion-item>
+  </ion-item-group>
+
+</ion-content>

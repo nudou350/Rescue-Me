@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersStoreService } from '../services/user.store';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +9,14 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  user$ = this.userStore.user$
+  constructor(private userStore : UsersStoreService, private router: Router) {}
+
+  create(){
+    this.router.navigateByUrl('tabs/create-pet')
+  }
+  update(){
+    this.router.navigateByUrl('tabs/update-pet')
+  }
 
 }

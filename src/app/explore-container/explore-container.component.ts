@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { PetStore } from '../services/pet.store';
 
 @Component({
   selector: 'app-explore-container',
@@ -8,8 +10,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ExploreContainerComponent implements OnInit {
   @Input() name: string;
 
-  constructor() { }
-
-  ngOnInit() {}
+  ngOnInit(){
+    
+  }
 
 }

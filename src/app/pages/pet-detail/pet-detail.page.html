@@ -1,0 +1,34 @@
+<ng-container *ngIf="selectedPet$|async as pet">
+  <ion-header >
+    <ion-toolbar color="warning">
+     
+      <ion-button (click)="this.router.navigateByUrl('tabs/tab1')" mode="ios" color="warning">
+        <ion-icon name="arrow-back" slot="start"></ion-icon>Voltar</ion-button>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content >
+    <ng-container *ngIf="relatedOng$ | async as ong">
+      <ion-item >
+        <ion-icon name="home" slot="start"></ion-icon>
+        <ion-label>
+          {{ong[0].ong}}
+        </ion-label>
+      </ion-item>
+      <ion-item >
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label >
+          <a class="email" [href]="'mailto:'+ong[0].email">{{ong[0].email}}</a>
+        </ion-label>
+      </ion-item>
+      <ion-item >
+        <ion-icon name="call" slot="start"></ion-icon>
+        <ion-label>
+          <a [href]="'tel:'+ong[0].phone">{{ong[0].phone}}</a>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  
+  </ion-content>
+  
+</ng-container>

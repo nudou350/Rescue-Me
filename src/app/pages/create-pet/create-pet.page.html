@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title style="color: white">
+      Adicionar Pet
+    </ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Adicionar Pet</ion-title>
+      
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-item-group [formGroup]="form">
+    <ion-item>
+      <ion-label position="floating">Nome do pet</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Local</ion-label>
+      <ion-input [disabled]="true"  formControlName="location" [value]="userStore.getOngLocation()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nome ONG</ion-label>
+      <ion-input [disabled]="true" formControlName="ong"  [value]="userStore.getOngName()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tamanho do pet</ion-label>
+      <ion-select mode="ios" formControlName="size">
+        <ion-select-option value="Pequeno">Pequeno</ion-select-option>
+        <ion-select-option value="Médio">Médio</ion-select-option>
+        <ion-select-option value="Grande">Grande</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Gênero</ion-label>
+      <ion-select mode="ios" formControlName="gender">
+        <ion-select-option value="Masculino">Masculino</ion-select-option>
+        <ion-select-option value="Feminino">Feminino</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Idade aproximada</ion-label>
+      <ion-input formControlName="age"></ion-input>
+    </ion-item>
+    <ion-item>
+      
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input formControlName="description"></ion-input>
+    </ion-item>
+
+    <ion-button *ngIf="this.location.value" (click)="onClick(fileUpload)" fill="clear" expand="full">
+      <ion-icon slot="start" name="attach"></ion-icon>
+      Escolher foto
+    </ion-button>
+    <div *ngIf="(percentageChanges$ | async) as percentage">
+      <ion-progress-bar color="primary" [value]="percentage"></ion-progress-bar>
+    </div>
+  </ion-item-group>
+  <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+  <div class="flex-button">
+    <ion-button (click)="this.router.navigateByUrl('')" color="danger">Cancelar</ion-button>
+    <ion-button [disabled]="!this.form.valid" (click)="savePet()" color="warning">Salvar</ion-button>
+  </div>
+
+</ion-content>
